@@ -68,20 +68,6 @@ def listar_estoque():
         for produto in estoque:
             print(f"ID: {produto['id']} | Nome: {produto['nome']} || Categoria: {produto['categoria']} || Qtd: {produto['quantidade']} || Preço: R$ {produto['preco']:.2f}")
 
-
-
-# 1. Adiciona um produto
-adicionar_produto("1", "Saco de cimento", "Alvenaria", 14, 49.90)
-
-# 2. Salva no TXT
-salvar_dados()
-
-# 3. Lê de volta do TXT para testar
-ler_arquivo()
-
-# 4. Mostra o estoque na tela
-listar_estoque()
-
 def controle_estoque(id_produto, quantidade_movimentada):
     for produto in estoque:
         if produto['id'] == str(id_produto):
@@ -94,5 +80,45 @@ def controle_estoque(id_produto, quantidade_movimentada):
                 salvar_dados()
                 print(f"Estoque do  {produto['nome']} atualizado: {nova_quantidade} unidades")
                 return True
-    print("ERRO: ID não encontrado, tente novamente")
+    print(f"\nERRO: ID não encontrado, tente novamente\n")
     return False
+
+
+def buscar_produto(item_buscado):
+    item_buscado = item_buscado.lower()
+    resultados = []
+    for produto in estoque:
+        if item_buscado in produto['nome'].lower():
+            resultados.append(produto)
+    return resultados
+
+
+
+
+
+# 1. Adiciona um produto
+adicionar_produto("1", "Saco de cimento", "Alvenaria", 14, 49.90)
+adicionar_produto("2", "Argamassa", "Alvenaria", 14, 49.90)
+
+# 2. Salva no TXT
+salvar_dados()
+
+# 3. Lê de volta do TXT para testar
+ler_arquivo()
+
+# 4. Mostra o estoque na tela
+listar_estoque()
+
+
+# Teste para entrada de saida de produtos
+controle_estoque("1", -4)
+listar_estoque()
+# ver se da erro
+controle_estoque("1", -50)
+listar_estoque()
+
+controle_estoque("1", 20)
+listar_estoque()
+
+busca = buscar_produto("cimento")
+print("Resultado da busca por 'cimento':", busca)

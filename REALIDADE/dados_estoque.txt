@@ -1,1 +1,2 @@
-1;Saco De Cimento;Alvenaria;14;49.9
+1;Saco De Cimento;Alvenaria;30;49.9
+2;Argamassa;Alvenaria;14;49.9
