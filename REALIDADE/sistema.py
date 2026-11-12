@@ -94,31 +94,33 @@ def buscar_produto(item_buscado):
 
 
 
+# Python define esse nome main para dizer que é esse arquivo que ta rodando , quando a interface.py chama o sistema.py o name = sistema e nao main porque agora ele e auxiliar
+if __name__ == "__main__":
+    #Se for importado pula tudo, se for ele mesmo roda
+
+    # 1. Adiciona um produto
+    adicionar_produto("1", "Saco de cimento", "Alvenaria", 14, 49.90)
+    adicionar_produto("2", "Argamassa", "Alvenaria", 14, 49.90)
+
+    # 2. Salva no TXT
+    salvar_dados()
+
+    # 3. Lê de volta do TXT para testar
+    ler_arquivo()
+
+    # 4. Mostra o estoque na tela
+    listar_estoque()
 
 
-# 1. Adiciona um produto
-adicionar_produto("1", "Saco de cimento", "Alvenaria", 14, 49.90)
-adicionar_produto("2", "Argamassa", "Alvenaria", 14, 49.90)
+    # Teste para entrada de saida de produtos
+    controle_estoque("1", -4)
+    listar_estoque()
+    # ver se da erro
+    controle_estoque("1", -50)
+    listar_estoque()
 
-# 2. Salva no TXT
-salvar_dados()
+    controle_estoque("1", 20)
+    listar_estoque()
 
-# 3. Lê de volta do TXT para testar
-ler_arquivo()
-
-# 4. Mostra o estoque na tela
-listar_estoque()
-
-
-# Teste para entrada de saida de produtos
-controle_estoque("1", -4)
-listar_estoque()
-# ver se da erro
-controle_estoque("1", -50)
-listar_estoque()
-
-controle_estoque("1", 20)
-listar_estoque()
-
-busca = buscar_produto("cimento")
-print("Resultado da busca por 'cimento':", busca)
+    busca = buscar_produto("cimento")
+    print("Resultado da busca por 'cimento':", busca)
